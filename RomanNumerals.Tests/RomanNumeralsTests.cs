@@ -40,6 +40,13 @@ namespace RomanNumerals.Tests
             string expectedRomanNumerals) =>
             number.ToRomanNumerals().Should().Be(expectedRomanNumerals);
 
+        [Theory]
+        [MemberData(nameof(TestCasesMixedNumerals))]
+        public void Number_Should_ConvertTo_RomanNumerals(
+            int number,
+            string expectedRomanNumerals) =>
+            number.ToRomanNumerals().Should().Be(expectedRomanNumerals);
+
         private static readonly List<object[]> TestCasesSingleLetterNumeralList =
             new List<object[]>
             {
@@ -83,10 +90,24 @@ namespace RomanNumerals.Tests
                 new object[] { 900, "CM" }
             };
 
+        private static readonly List<object[]> TestCasesMixedNumeralsList =
+            new List<object[]>
+            {
+                new object[] { 39, "XXXIX" },
+                new object[] { 246, "CCXLVI" },
+                new object[] { 207, "CCVII" },
+                new object[] { 1066, "MLXVI" },
+                new object[] { 1776, "MDCCLXXVI" },
+                new object[] { 1873, "MDCCCLXXIII" },
+                new object[] { 1984, "MCMLXXXIV" },
+                new object[] { 2018, "MMXVIII" }
+            };
+
         // ReSharper disable MemberCanBePrivate.Global
         public static IEnumerable<object[]> TestCasesSingleLetterNumerals => TestCasesSingleLetterNumeralList;
         public static IEnumerable<object[]> TestCasesSameLetterNumerals => TestCasesSameLetterNumeralList;
         public static IEnumerable<object[]> TestCasesMinusOneNumerals => TestCasesMinusOneNumeralList;
+        public static IEnumerable<object[]> TestCasesMixedNumerals => TestCasesMixedNumeralsList;
         // ReSharper restore MemberCanBePrivate.Global
     }
 }
