@@ -7,23 +7,19 @@ namespace RomanNumerals.Tests
 {
     public class RomanNumeralsTests
     {
-        [Fact]
-        public void NegativeNumber_Should_Throw_ArgumentOutOfRangeException()
-        {
-            var exception = Record.Exception(() => (-1).ToRomanNumerals());
-            exception.Should().NotBeNull();
-            exception.Should().BeOfType<ArgumentOutOfRangeException>();
-        }
-
         [Theory]
+        [InlineData(-42)]
+        [InlineData(-1)]
         [InlineData(4000)]
         [InlineData(4001)]
         [InlineData(5000)]
-        public void TooLargeNumber_Should_Throw_ArgumentOutOfRangeException(int tooLargeNumber)
+        public void NumberOutOfAllowedRange_Should_Throw_ArgumentOutOfRangeException(int tooLargeNumber)
         {
             var exception = Record.Exception(() => tooLargeNumber.ToRomanNumerals());
             exception.Should().NotBeNull();
             exception.Should().BeOfType<ArgumentOutOfRangeException>();
+            exception.Message.Should().StartWith("Expected a number in the range [0,4000)");
+            exception.Message.Should().EndWith("Parameter name: number");
         }
 
         [Fact]
