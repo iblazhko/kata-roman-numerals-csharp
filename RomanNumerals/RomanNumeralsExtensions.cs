@@ -7,6 +7,7 @@ namespace RomanNumerals
         private static readonly Dictionary<int, string> numerals = new Dictionary<int, string>
         {
             { 1, "I" },
+            { 2, "II" },
             { 5, "V" }
         };
 
