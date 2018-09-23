@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 using FluentAssertions;
 
@@ -13,12 +14,6 @@ namespace RomanNumerals.Tests
         }
 
         [Fact]
-        public void Number_1_ConvertsTo_I()
-        {
-            1.ToRomanNumerals().Should().Be("I");
-        }
-
-        [Fact]
         public void Number_2_ConvertsTo_II()
         {
             2.ToRomanNumerals().Should().Be("II");
@@ -30,10 +25,22 @@ namespace RomanNumerals.Tests
             4.ToRomanNumerals().Should().Be("IV");
         }
 
-        [Fact]
-        public void Number_5_ConvertsTo_V()
-        {
-            5.ToRomanNumerals().Should().Be("V");
-        }
+        [Theory]
+        [MemberData(nameof(TestCasesSingleLetterNumerals))]
+        public void Number_MatchingNumeralsAlphabet_Should_ConvertTo_SingleLetterRomanNumerals(
+            int number,
+            string expectedRomanNumerals) =>
+            number.ToRomanNumerals().Should().Be(expectedRomanNumerals);
+
+        private static readonly List<object[]> TestCasesSingleLetterNumeralList =
+            new List<object[]>
+            {
+                // ReSharper disable RedundantCommaInInitializer
+                new object[] { 1, "I" },
+                new object[] { 5, "V" },
+            };
+
+        // ReSharper disable once MemberCanBePrivate.Global
+        public static IEnumerable<object[]> TestCasesSingleLetterNumerals => TestCasesSingleLetterNumeralList;
     }
 }
