@@ -4,7 +4,7 @@ namespace RomanNumerals
     {
         public static string ToRomanNumerals(this int number)
         {
-            return string.Empty;
+            return number > 0 ? "I" : string.Empty;
         }
     }
 }
