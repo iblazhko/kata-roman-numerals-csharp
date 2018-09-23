@@ -8,6 +8,14 @@ namespace RomanNumerals.Tests
     public class RomanNumeralsTests
     {
         [Fact]
+        public void NegativeNumber_Should_Throw_ArgumentOutOfRangeException()
+        {
+            var exception = Record.Exception(() => (-1).ToRomanNumerals());
+            exception.Should().NotBeNull();
+            exception.Should().BeOfType<ArgumentOutOfRangeException>();
+        }
+
+        [Fact]
         public void Number_0_ConvertsTo_Empty()
         {
             0.ToRomanNumerals().Should().Be(string.Empty);
