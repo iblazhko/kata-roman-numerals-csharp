@@ -23,7 +23,12 @@ namespace RomanNumerals
             {
                 new Bucket(1, "I"),
                 new Bucket(4, "IV"),
-                new Bucket(5, "V")
+                new Bucket(5, "V"),
+                new Bucket(10, "X"),
+                new Bucket(50, "L"),
+                new Bucket(100, "C"),
+                new Bucket(500, "D"),
+                new Bucket(1000, "M")
             }
             .OrderByDescending(x => x.Value)
             .ToList();
