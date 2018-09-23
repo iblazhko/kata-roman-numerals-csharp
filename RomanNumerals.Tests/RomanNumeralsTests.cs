@@ -17,5 +17,11 @@ namespace RomanNumerals.Tests
         {
             1.ToRomanNumerals().Should().Be("I");
         }
+
+        [Fact]
+        public void Number_5_ConvertsTo_V()
+        {
+            5.ToRomanNumerals().Should().Be("V");
+        }
     }
 }
