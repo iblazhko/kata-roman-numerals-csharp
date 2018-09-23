@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,6 +46,8 @@ namespace RomanNumerals
 
         public static string ToRomanNumerals(this int number)
         {
+            if (number < 0) throw new ArgumentOutOfRangeException();
+
             var numerals = new StringBuilder();
             var reminder = number;
             while (reminder > 0)
