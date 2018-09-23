@@ -19,6 +19,12 @@ namespace RomanNumerals.Tests
         }
 
         [Fact]
+        public void Number_2_ConvertsTo_II()
+        {
+            2.ToRomanNumerals().Should().Be("II");
+        }
+
+        [Fact]
         public void Number_5_ConvertsTo_V()
         {
             5.ToRomanNumerals().Should().Be("V");
