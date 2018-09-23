@@ -15,6 +15,17 @@ namespace RomanNumerals.Tests
             exception.Should().BeOfType<ArgumentOutOfRangeException>();
         }
 
+        [Theory]
+        [InlineData(4000)]
+        [InlineData(4001)]
+        [InlineData(5000)]
+        public void TooLargeNumber_Should_Throw_ArgumentOutOfRangeException(int tooLargeNumber)
+        {
+            var exception = Record.Exception(() => tooLargeNumber.ToRomanNumerals());
+            exception.Should().NotBeNull();
+            exception.Should().BeOfType<ArgumentOutOfRangeException>();
+        }
+
         [Fact]
         public void Number_0_ConvertsTo_Empty()
         {
