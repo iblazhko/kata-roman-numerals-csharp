@@ -33,6 +33,13 @@ namespace RomanNumerals.Tests
             string expectedRomanNumerals) =>
             number.ToRomanNumerals().Should().Be(expectedRomanNumerals);
 
+        [Theory]
+        [MemberData(nameof(TestCasesMinusOneNumerals))]
+        public void Number_MatchingMinusOnePattern_Should_ConvertTo_INextRomanNumerals(
+            int number,
+            string expectedRomanNumerals) =>
+            number.ToRomanNumerals().Should().Be(expectedRomanNumerals);
+
         private static readonly List<object[]> TestCasesSingleLetterNumeralList =
             new List<object[]>
             {
@@ -65,9 +72,21 @@ namespace RomanNumerals.Tests
                 new object[] { 3000, "MMM" }
             };
 
+        private static readonly List<object[]> TestCasesMinusOneNumeralList =
+            new List<object[]>
+            {
+                new object[] { 4, "IV" },
+                new object[] { 9, "IX" },
+                new object[] { 40, "XL" },
+                new object[] { 90, "XC" },
+                new object[] { 400, "CD" },
+                new object[] { 900, "CM" }
+            };
+
         // ReSharper disable MemberCanBePrivate.Global
         public static IEnumerable<object[]> TestCasesSingleLetterNumerals => TestCasesSingleLetterNumeralList;
         public static IEnumerable<object[]> TestCasesSameLetterNumerals => TestCasesSameLetterNumeralList;
+        public static IEnumerable<object[]> TestCasesMinusOneNumerals => TestCasesMinusOneNumeralList;
         // ReSharper restore MemberCanBePrivate.Global
     }
 }
