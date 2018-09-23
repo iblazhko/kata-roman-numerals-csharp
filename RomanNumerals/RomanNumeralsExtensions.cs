@@ -22,6 +22,7 @@ namespace RomanNumerals
             new[]
             {
                 new Bucket(1, "I"),
+                new Bucket(4, "IV"),
                 new Bucket(5, "V")
             }
             .OrderByDescending(x => x.Value)
