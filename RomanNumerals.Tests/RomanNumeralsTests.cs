@@ -13,12 +13,6 @@ namespace RomanNumerals.Tests
             0.ToRomanNumerals().Should().Be(string.Empty);
         }
 
-        [Fact]
-        public void Number_4_ConvertsTo_IV()
-        {
-            4.ToRomanNumerals().Should().Be("IV");
-        }
-
         [Theory]
         [MemberData(nameof(TestCasesSingleLetterNumerals))]
         public void Number_MatchingNumeralsAlphabet_Should_ConvertTo_SingleLetterRomanNumerals(
