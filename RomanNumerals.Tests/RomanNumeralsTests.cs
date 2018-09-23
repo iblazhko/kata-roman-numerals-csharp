@@ -25,6 +25,12 @@ namespace RomanNumerals.Tests
         }
 
         [Fact]
+        public void Number_4_ConvertsTo_IV()
+        {
+            4.ToRomanNumerals().Should().Be("IV");
+        }
+
+        [Fact]
         public void Number_5_ConvertsTo_V()
         {
             5.ToRomanNumerals().Should().Be("V");
