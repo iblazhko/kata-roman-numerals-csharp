@@ -47,6 +47,7 @@ namespace RomanNumerals
         public static string ToRomanNumerals(this int number)
         {
             if (number < 0) throw new ArgumentOutOfRangeException();
+            if (number >= 4000) throw new ArgumentOutOfRangeException();
 
             var numerals = new StringBuilder();
             var reminder = number;
