@@ -11,5 +11,11 @@ namespace RomanNumerals.Tests
         {
             0.ToRomanNumerals().Should().Be(string.Empty);
         }
+
+        [Fact]
+        public void Number_1_ConvertsTo_I()
+        {
+            1.ToRomanNumerals().Should().Be("I");
+        }
     }
 }
