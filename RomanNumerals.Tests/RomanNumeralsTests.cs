@@ -14,12 +14,6 @@ namespace RomanNumerals.Tests
         }
 
         [Fact]
-        public void Number_2_ConvertsTo_II()
-        {
-            2.ToRomanNumerals().Should().Be("II");
-        }
-
-        [Fact]
         public void Number_4_ConvertsTo_IV()
         {
             4.ToRomanNumerals().Should().Be("IV");
@@ -28,6 +22,13 @@ namespace RomanNumerals.Tests
         [Theory]
         [MemberData(nameof(TestCasesSingleLetterNumerals))]
         public void Number_MatchingNumeralsAlphabet_Should_ConvertTo_SingleLetterRomanNumerals(
+            int number,
+            string expectedRomanNumerals) =>
+            number.ToRomanNumerals().Should().Be(expectedRomanNumerals);
+
+        [Theory]
+        [MemberData(nameof(TestCasesSameLetterNumerals))]
+        public void Number_Matching1x2xOr3xDecimals_Should_ConvertTo_SameLetterRomanNumerals(
             int number,
             string expectedRomanNumerals) =>
             number.ToRomanNumerals().Should().Be(expectedRomanNumerals);
@@ -44,7 +45,29 @@ namespace RomanNumerals.Tests
                 new object[] { 1000, "M" }
             };
 
-        // ReSharper disable once MemberCanBePrivate.Global
+        private static readonly List<object[]> TestCasesSameLetterNumeralList =
+            new List<object[]>
+            {
+                new object[] { 1, "I" },
+                new object[] { 2, "II" },
+                new object[] { 3, "III" },
+
+                new object[] { 10, "X" },
+                new object[] { 20, "XX" },
+                new object[] { 30, "XXX" },
+
+                new object[] { 100, "C" },
+                new object[] { 200, "CC" },
+                new object[] { 300, "CCC" },
+
+                new object[] { 1000, "M" },
+                new object[] { 2000, "MM" },
+                new object[] { 3000, "MMM" }
+            };
+
+        // ReSharper disable MemberCanBePrivate.Global
         public static IEnumerable<object[]> TestCasesSingleLetterNumerals => TestCasesSingleLetterNumeralList;
+        public static IEnumerable<object[]> TestCasesSameLetterNumerals => TestCasesSameLetterNumeralList;
+        // ReSharper restore MemberCanBePrivate.Global
     }
 }
