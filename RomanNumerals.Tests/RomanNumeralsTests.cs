@@ -35,9 +35,13 @@ namespace RomanNumerals.Tests
         private static readonly List<object[]> TestCasesSingleLetterNumeralList =
             new List<object[]>
             {
-                // ReSharper disable RedundantCommaInInitializer
                 new object[] { 1, "I" },
                 new object[] { 5, "V" },
+                new object[] { 10, "X" },
+                new object[] { 50, "L" },
+                new object[] { 100, "C" },
+                new object[] { 500, "D" },
+                new object[] { 1000, "M" }
             };
 
         // ReSharper disable once MemberCanBePrivate.Global
