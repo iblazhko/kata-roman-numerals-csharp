@@ -19,7 +19,7 @@ namespace RomanNumerals.Tests
             exception.Should().NotBeNull();
             exception.Should().BeOfType<ArgumentOutOfRangeException>();
             exception.Message.Should().StartWith("Expected a number in the range [0,4000)");
-            exception.Message.Should().EndWith("Parameter name: number");
+            exception.Message.Should().EndWith("(Parameter 'number')");
         }
 
         [Fact]
